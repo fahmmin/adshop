@@ -1,0 +1,102 @@
+* {
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+#title {
+    text-align: center;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#adblock{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+padding-right: 10px;
+
+}
+
+
+
+#watch {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#refer {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#balance {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#settings {
+    background-color: #ffc107;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#daily {
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#watch:hover, #refer:hover, #balance:hover, #settings:hover, #daily:hover {
+    opacity: 0.8;
+}
+
+
+
+#footer {
+    border-top: 3px solid gold;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

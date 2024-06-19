@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <script src="script.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+</head>
+
+<body>
+    <div id="title">
+        <h1>AdShop</h1>
+    </div>
+    <div id="buttons">
+    <button id="watch">
+        Watch Ads
+    </button>
+    <button id="refer">Refer</button><button id="balance">Balance</button><button id="settings">Settings</button>
+</div>
+<div style="text-align: center; padding-top: 10px;">
+    <button id="daily" onclick="generateRandomBonus()">Daily Bonus</button>
+    <p id="bonusDisplay"></p> <!-- Element to display the bonus -->
+</div>
+<script>
+    var balance = 0; // Initialize global variable 'balance'
+
+    function generateRandomBonus() {
+        const lastClaimed = localStorage.getItem('lastClaimed');
+        const now = new Date().getTime();
+        const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+        if (lastClaimed && now - lastClaimed < twentyFourHours) {
+            const nextClaimTime = new Date(parseInt(lastClaimed) + twentyFourHours);
+            const hours = nextClaimTime.getHours();
+            const minutes = nextClaimTime.getMinutes();
+            const seconds = nextClaimTime.getSeconds();
+            document.getElementById('bonusDisplay').innerText = `Next bonus available at ${hours}:${minutes}:${seconds}`;
+            setTimeout(() => {
+                document.getElementById('bonusDisplay').innerText = '';
+            }, 3000); // Clear message after 3 seconds
+        } else {
+            var min = 0.1;
+            var max = 1;
+            var bonus = (Math.random() * (max - min) + min).toFixed(2); // Generate random number and fix to 2 decimal places
+            balance += parseFloat(bonus); // Add bonus to global balance
+            document.getElementById('bonusDisplay').innerText = `Your bonus: ₹${bonus}`;
+            localStorage.setItem('lastClaimed', now.toString());
+            setTimeout(() => {
+                document.getElementById('bonusDisplay').innerText = '';
+            }, 3000); // Clear message after 3 seconds
+        }
+    }
+</script>
+<div id="adblock">
+    <img src="https://via.placeholder.com/290x300" alt="" style="text-align: center;">
+</div>
+<div id="loadingScreen" style="display: none;">
+    <div id="loadingContent">
+        <div class="loader"></div>
+        <p>Loading... Please Wait</p>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <img src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt="">
+        <!-- <p>AdShop © 2024</p> -->
+    </div>
+</footer>
+<script>
+    document.getElementById('watch').addEventListener('click', function() {
+        document.getElementById('loadingScreen').style.display = 'flex';
+        // Optionally, hide the loading screen after some time or after some event
+        setTimeout(function() {
+            document.getElementById('loadingScreen').style.display = 'none';
+        }, 3000); // hides after 3 seconds for demonstration
+    });
+</script>
+</body>
+
+</html>
