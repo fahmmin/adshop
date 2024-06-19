@@ -27,10 +27,14 @@ button {
     justify-content: center;
     padding-top: 20px;
 padding-right: 10px;
-
+    overflow-x: auto;
 }
 
-
+#message-container {
+    width: 100%; /* Adjust width as necessary */
+    height: auto; /* Adjust height based on content */
+    margin: 20px 0; /* Space above and below the container */
+}
 
 #watch {
     background-color: #dc3545;
@@ -81,7 +85,33 @@ padding-right: 10px;
     opacity: 0.8;
 }
 
+/* Hide the message and placeholder on mobile devices */
+@media (max-width: 600px) {
+    #non-mobile-message, #non-mobile-placeholder {
+        display: none;
+    }
+}
 
+/* Show the message and placeholder on tablets and desktops */
+@media (min-width: 601px) {
+    #non-mobile-message {
+        display: block;
+        text-align: center;
+        margin: 20px 0;
+        font-size: 20px;
+        color: red;
+    }
+
+    #non-mobile-placeholder {
+        display: block;
+        width: 300px; /* Example width */
+        height: 200px; /* Example height */
+        background-color: #cccccc;
+        text-align: center;
+        line-height: 200px; /* Aligns text vertically */
+        margin: 20px auto;
+    }
+}
 
 #footer {
     border-top: 3px solid gold;

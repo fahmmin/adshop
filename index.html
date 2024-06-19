@@ -23,10 +23,33 @@
         <button id="balance">Balance</button>
         <button id="settings">Settings</button>
     </div>
+    <div id="referral-container" style="text-align: center; padding-top: 10px; display: none;">
+        <span id="referral-link">google.com</span>
+        <button id="copy-button">Copy</button>
+    </div>
     <div style="text-align: center; padding-top: 10px;">
         <button id="daily" onclick="generateRandomBonus()">Daily Bonus</button>
         <p id="bonusDisplay"></p> <!-- Element to display the bonus -->
     </div>
+    <p id="balanceDisplay"></p> <!-- Element to display the balance -->
+    <div id="message-container"></div>
+    <div id="adblock">
+        <img src="https://via.placeholder.com/290x300" alt="" style="text-align: center;">
+    </div>
+    <div id="loadingScreen" style="display: none;">
+        <div id="loadingContent">
+            <div class="loader"></div>
+            <p>Loading... Please Wait</p>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer">
+            <img src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt=""><img
+                src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt="">
+            <!-- <p>AdShop © 2024</p> -->
+        </div>
+    </footer>
     <script>
         var balance = 0; // Initialize global variable 'balance'
 
@@ -57,22 +80,6 @@
             }
         }
     </script>
-    <div id="adblock">
-        <img src="https://via.placeholder.com/290x300" alt="" style="text-align: center;">
-    </div>
-    <div id="loadingScreen" style="display: none;">
-        <div id="loadingContent">
-            <div class="loader"></div>
-            <p>Loading... Please Wait</p>
-        </div>
-    </div>
-    <footer>
-        <div id="footer">
-            <img src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt=""><img
-                src="https://via.placeholder.com/30x30" alt=""><img src="https://via.placeholder.com/30x30" alt="">
-            <!-- <p>AdShop © 2024</p> -->
-        </div>
-    </footer>
     <script>
         document.getElementById('watch').addEventListener('click', function () {
             document.getElementById('loadingScreen').style.display = 'flex';
@@ -80,6 +87,42 @@
             setTimeout(function () {
                 document.getElementById('loadingScreen').style.display = 'none';
             }, 3000); // hides after 3 seconds for demonstration
+        });
+    </script>
+    <script>
+        document.getElementById('balance').addEventListener('click', function () {
+            var balanceDisplay = document.getElementById('balanceDisplay');
+            balanceDisplay.innerText = `Your Balance = ₹${balance}`;
+            setTimeout(function() {
+                balanceDisplay.innerText = '';
+            }, 3000); // Clears the text after 3000 milliseconds (3 seconds)
+        });
+    </script>
+    <script>
+        document.getElementById('refer').addEventListener('click', function () {
+            document.getElementById('referral-container').style.display = 'block';
+        });
+
+        document.getElementById('copy-button').addEventListener('click', function () {
+            const text = document.getElementById('referral-link').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                document.getElementById('message-container').innerHTML = '<p>Link copied to clipboard!</p>';
+                setTimeout(() => {
+                    document.getElementById('message-container').innerHTML = '';
+                }, 3000);
+            });
+        });
+
+        // Example for a loading screen when any button is clicked
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('message-container').innerHTML = '<p>Loading...</p>';
+                // Remove loading message after some time or after loading is complete
+                setTimeout(() => {
+                    document.getElementById('message-container').innerHTML = '';
+                }, 3000); // Adjust time as necessary
+            });
         });
     </script>
 </body>
